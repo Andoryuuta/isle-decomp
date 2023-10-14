@@ -4,6 +4,7 @@
 #include "mxdsfile.h"
 #include "legogamestate.h"
 #include "legoutil.h"
+#include "legoobjectfactory.h"
 
 // 0x100f4588
 MxAtomId *g_nocdSourceName = NULL;
@@ -276,6 +277,7 @@ MxResult LegoOmni::Create(COMPAT_CONST MxOmniCreateParam &p)
 {
   // FIXME: Stub
   MxOmni::Create(p);
+  m_objectFactory = new LegoObjectFactory();
   m_gameState = new LegoGameState();
   m_bkgAudioManager = new MxBackgroundAudioManager();
 

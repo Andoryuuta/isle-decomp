@@ -5,7 +5,7 @@
 
 // VTABLE 0x100d7fd8
 // SIZE 0x28
-class TowTrackMissionState : LegoState
+class TowTrackMissionState : public LegoState
 {
 public:
   TowTrackMissionState();
