@@ -86,6 +86,7 @@ add_library(lego1 SHARED
   LEGO1/legophonemepresenter.cpp
   LEGO1/legoplantmanager.cpp
   LEGO1/legorace.cpp
+  LEGO1/legoracecar.cpp
   LEGO1/legoroi.cpp
   LEGO1/legosoundmanager.cpp
   LEGO1/legostate.cpp
