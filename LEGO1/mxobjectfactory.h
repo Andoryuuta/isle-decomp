@@ -4,31 +4,41 @@
 #include "mxcore.h"
 #include "mxatomid.h"
 
-#define FOR_MXOBJECTFACTORY_OBJECTS(X)  \
-  X(MxPresenter)                        \
-  X(MxCompositePresenter)               \
-  X(MxVideoPresenter)                   \
-  X(MxFlcPresenter)                     \
-  X(MxSmkPresenter)                     \
-  X(MxStillPresenter)                   \
-  X(MxWavePresenter)                    \
-  X(MxMIDIPresenter)                    \
-  X(MxEventPresenter)                   \
-  X(MxLoopingFlcPresenter)              \
-  X(MxLoopingSmkPresenter)              \
-  X(MxLoopingMIDIPresenter)
-
 // VTABLE 0x100dc220
 class MxObjectFactory : public MxCore
 {
 public:
   MxObjectFactory();
+
+  // OFFSET: LEGO1 0x10008f70
+  inline virtual const char *ClassName() const override // vtable+0x0c
+  {
+    // 0x100f0730
+    return "MxObjectFactory";
+  }
+
+  // OFFSET: LEGO1 0x10008f80
+  inline virtual MxBool IsA(const char *name) const override // vtable+0x10
+  {
+    return !strcmp(MxObjectFactory::ClassName(), name) || MxCore::IsA(name);
+  }
+
   virtual MxCore *Create(const char *name); // vtable 0x14
-  virtual void vtable18(void *); // vtable 0x18
+  virtual void Delete(MxCore *); // vtable 0x18
+
 private:
-#define X(V) MxAtomId m_id##V;
-  FOR_MXOBJECTFACTORY_OBJECTS(X)
-#undef X
+  MxAtomId m_idMxPresenter;
+  MxAtomId m_idMxCompositePresenter;
+  MxAtomId m_idMxVideoPresenter;
+  MxAtomId m_idMxFlcPresenter;
+  MxAtomId m_idMxSmkPresenter;
+  MxAtomId m_idMxStillPresenter;
+  MxAtomId m_idMxWavePresenter;
+  MxAtomId m_idMxMIDIPresenter;
+  MxAtomId m_idMxEventPresenter;
+  MxAtomId m_idMxLoopingFlcPresenter;
+  MxAtomId m_idMxLoopingSmkPresenter;
+  MxAtomId m_idMxLoopingMIDIPresenter;
 };
 
 #endif // MXOBJECTFACTORY_H
